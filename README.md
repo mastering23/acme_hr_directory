@@ -5,11 +5,17 @@
 ![alt text](img/image.png)
 
 ### Setting up .env for the Project
+I'm using npm dotenv to keep my environment details private,
+while allowing others to use their own environment settings.
+
 - npm install dotenv
 - create a .env file
 - Create a .env file in the root directory of the project <br> 
   replacing the values with your own PostgreSQL environment details: 
 - require('dotenv').config({ path: `${__dirname}/your_path ` });
+- add inside of your .gitignore  .env/
+
+
 
 ```
 PGUSER=your_postgres_username      # Replace with your PostgreSQL username
