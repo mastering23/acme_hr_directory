@@ -1,4 +1,4 @@
-const clientSet = require('./client.js');
+const clientSet = require('./client.cjs');
 
 const dropTable = async () => {
   await clientSet.query('DROP TABLE IF EXISTS employee, department CASCADE');
