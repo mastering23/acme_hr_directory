@@ -11,11 +11,11 @@ const addDepartment = async (name) => {
     console.log('Department added successfully...... ✅');
   } catch (err) {
     console.log('Error adding department: ⚠️ ', err);
+    throw err; // Rethrow the error to handle it in the server
   } finally {
     await client.end();
     console.log("Disconnected from the database.......❌");
   }
 };
 
-
-addDepartment('human_resources');
+module.exports = { addDepartment };  // Export the function
