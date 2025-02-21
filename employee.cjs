@@ -1,14 +1,13 @@
 const client = require('./client.cjs');
+const { addDepartment } = require('./department.cjs');
 
 const addEmployee = async (name, departmentId) => {
-  try {
-    await client.connect();
-    console.log("Connected to the database... ✅");
-
-    const query = `INSERT INTO employee(name, department_id) VALUES($1,$2)`;
-    const values = [name, departmentId];
-    await client.query(query, values);
-    console.log("Employee added successfully.......");
+  try {    
+    await client.query(
+      `INSERT INTO employee(name, department_id) VALUES($1,$2)`,
+      [name,departmentId]
+    );
+    console.log("Employee added successfully........ ✅");
   } catch (err) {
     console.log("Error adding employee: ⚠️", err);
   } finally {
@@ -17,6 +16,4 @@ const addEmployee = async (name, departmentId) => {
   }
 };
 
-
-addEmployee('Jim', 1); 
-
+module.exports = { addEmployee };  
