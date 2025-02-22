@@ -7,8 +7,7 @@ const client = new Client({
   host: process.env.PGHOST,        // PostgreSQL server host
   database: process.env.PGDATABASE,// PostgreSQL database
   password: process.env.PGPASSWORD,// PostgreSQL password
-  port: process.env.PGPORT         // PostgreSQL port 
-  
+  port: process.env.PGPORT         // PostgreSQL port   
 });
 
 

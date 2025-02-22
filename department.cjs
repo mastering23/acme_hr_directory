@@ -6,9 +6,11 @@ const addDepartment = async (name) => {
       `INSERT INTO department (name) VALUES ($1)`,
       [name]
     );
+    console.log(`Departament table: \n INSERT INTO department[ ${name} ] successfully........ ✅`);
   } catch (error) {
-    console.error('Error adding department:', error);
+    console.error('Error adding department:⚠️', error);
   } 
 };
+
 
 module.exports = { addDepartment };
