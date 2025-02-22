@@ -4,6 +4,8 @@
 
 ![alt text](img/image.png)
 
+
+
 ### Setting up .env for the Project
 I'm using npm dotenv to keep my environment details private,
 while allowing others to use their own environment settings.
