@@ -9,12 +9,12 @@ client.connect();
 
 app.use(express.json());
 
-// Root route
+
 app.get('/api/v1/', (req, res) => {
   res.send('Welcome to ACME HUMAN RESOURCES');
 });
 
-// Get all employees
+
 app.get('/api/v1/employees', async (req, res, next) => {
   try {
     const allEmployees = await fetchAllEmployees();
@@ -24,7 +24,7 @@ app.get('/api/v1/employees', async (req, res, next) => {
   }
 });
 
-// Add a new employee
+
 app.post('/api/v1/employee', async (req, res, next) => {
   const { name, departmentId } = req.body;
   try {
@@ -35,7 +35,7 @@ app.post('/api/v1/employee', async (req, res, next) => {
   }
 });
 
-// Update an employee by id
+
 app.put('/api/v1/employee/:id', async (req, res, next) => {
   const { id } = req.params;
   const { name, departmentId } = req.body;
@@ -47,7 +47,7 @@ app.put('/api/v1/employee/:id', async (req, res, next) => {
   }
 });
 
-// Delete an employee by id
+
 app.delete('/api/v1/employee/:id', async (req, res, next) => {
   const { id } = req.params;
   try {
@@ -58,7 +58,7 @@ app.delete('/api/v1/employee/:id', async (req, res, next) => {
   }
 });
 
-// Get all departments
+
 app.get('/api/v1/departments', async (req, res, next) => {
   try {
     const allDepartments = await fetchAllDepartments();
@@ -68,7 +68,6 @@ app.get('/api/v1/departments', async (req, res, next) => {
   }
 });
 
-// Add a new department
 app.post('/api/v1/department', async (req, res, next) => {
   const { name } = req.body;
   try {
@@ -79,7 +78,7 @@ app.post('/api/v1/department', async (req, res, next) => {
   }
 });
 
-// Update a department by id
+
 app.put('/api/v1/department/:id', async (req, res, next) => {
   const { id } = req.params;
   const { name } = req.body;
@@ -91,7 +90,7 @@ app.put('/api/v1/department/:id', async (req, res, next) => {
   }
 });
 
-// Delete a department by id
+
 app.delete('/api/v1/department/:id', async (req, res, next) => {
   const { id } = req.params;
   try {
@@ -102,13 +101,13 @@ app.delete('/api/v1/department/:id', async (req, res, next) => {
   }
 });
 
-// Error handling middleware
+
 app.use((err, req, res, next) => {
   console.error(err);
   res.status(500).json({ error: 'An error occurred on the server.' });
 });
 
-// Start server
+
 const port = 3000;
 app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}`);
