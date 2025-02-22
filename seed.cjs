@@ -1,5 +1,5 @@
 const client = require('./client.cjs');
-const { addDepartment } = require('./department.cjs');
+const { addDepartment, fetchAllDepartments, updateDepartment, deleteDepartment } = require('./department.cjs');
 const { addEmployee, fetchAllEmployees, updateEmployee, deleteEmployee } = require('./employee.cjs');
 
 const dropTable = async () => {
@@ -38,6 +38,7 @@ const seedAsync = async () => {
   await addDepartment('Education');  
   await addDepartment('Administration');  
   await addDepartment('Legal');
+  await addDepartment('Home Services');
 
   await addEmployee('Mike', 1);
   await addEmployee('Steve', 2);
@@ -48,13 +49,20 @@ const seedAsync = async () => {
   await addEmployee('Nancy', 1);
   await addEmployee('Nick', 3);
 
+  const allDepartments = await fetchAllDepartments();
+  console.log("All Departments:", allDepartments);
+ 
+  const updatedDepartment = await updateDepartment(1, 'HR and Talent Management');
+  console.log("Updated Department:", updatedDepartment);
+
+  const deletedDepartment = await deleteDepartment(5);
+  console.log("Deleted Department:", deletedDepartment);
+
   const allEmployees = await fetchAllEmployees();
   console.log("All Employees:", allEmployees);
 
-
   const updatedEmployee = await updateEmployee(1, 'Michael', 2);
   console.log("Updated Employee:", updatedEmployee);
-
   
   const deletedEmployee = await deleteEmployee(2);
   console.log("Deleted Employee:", deletedEmployee);
