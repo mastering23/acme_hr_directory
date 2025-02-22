@@ -1,43 +1,56 @@
 const express = require('express');
 const app = express();
 const client = require('./client.cjs');
+
 client.connect();
 
 app.use(express.json());
 
-app.get('/', (req, res) => {
+app.get('/api/v1/', (req, res ,next) => {
   console.log('Server is working...');
-  res.send('Hello, World!');
+  res.send('Welcome to ACME HUMAN RESOURCES');
+  next();
 });
 
-app.post('/api/v1/employee', (req, res) => {
+app.get('/api/v1/employee', (req, res ,next) => {
   console.log(req.body);
   res.send('Employee added');
+  next();
+});
+app.post('/api/v1/employee', (req, res ,next) => {
+  console.log(req.body);
+  res.send('Employee added');
+  next();
 });
 
-app.put('/api/v1/employee', (req, res) => {
+app.put('/api/v1/employee', (req, res ,next) => {
   console.log(req.body);
   res.send('Employee updated');
+  next();
 });
 
-app.delete('/api/v1/employee', (req, res) => {
+app.delete('/api/v1/employee', (req, res ,next) => {
   console.log(req.body);
   res.send('Employee deleted');
+  next();
 });
 
-app.post('/api/v1/department', (req, res) => {
+app.post('/api/v1/department', (req, res ,next) => {
   console.log(req.body);
   res.send('Department added');
+  next();
 });
 
-app.put('/api/v1/department', (req, res) => {
+app.put('/api/v1/department', (req, res ,next) => {
   console.log(req.body);
   res.send('Department updated');
+  next();
 });
 
-app.delete('/api/v1/department', (req, res) => {
+app.delete('/api/v1/department', (req, res ,next) => {
   console.log(req.body);
   res.send('Department deleted');
+  next();
 });
 
 const port = 3005;

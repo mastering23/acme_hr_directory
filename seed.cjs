@@ -1,6 +1,6 @@
 const client = require('./client.cjs');
 const { addDepartment } = require('./department.cjs');
-const { addEmployee } = require('./employee.cjs');
+const { addEmployee, fetchAllEmployees, updateEmployee, deleteEmployee } = require('./employee.cjs');
 
 const dropTable = async () => {
   await client.query('DROP TABLE IF EXISTS employee');
@@ -8,7 +8,6 @@ const dropTable = async () => {
 };
 
 const createTable = async () => {
-  
   await client.query(`
     CREATE TABLE department (
       id SERIAL PRIMARY KEY,
@@ -26,7 +25,6 @@ const createTable = async () => {
 };
 
 const seedAsync = async () => {
-  
   await client.connect();
   console.log('Client connecting.....✅');
 
@@ -36,8 +34,30 @@ const seedAsync = async () => {
   await createTable();
   console.log('Creating tables.....✳️ \n TABLE CREATED [ employee ] \n TABLE CREATED [ department ]');
 
-  await addDepartment('Human Resources');
+  await addDepartment('Human Resources');  
+  await addDepartment('Education');  
+  await addDepartment('Administration');  
+  await addDepartment('Legal');
+
   await addEmployee('Mike', 1);
+  await addEmployee('Steve', 2);
+  await addEmployee('Sarah', 3);
+  await addEmployee('Tommy', 4);
+  await addEmployee('Marie', 2);
+  await addEmployee('Carlos', 4);
+  await addEmployee('Nancy', 1);
+  await addEmployee('Nick', 3);
+
+  const allEmployees = await fetchAllEmployees();
+  console.log("All Employees:", allEmployees);
+
+
+  const updatedEmployee = await updateEmployee(1, 'Michael', 2);
+  console.log("Updated Employee:", updatedEmployee);
+
+  
+  const deletedEmployee = await deleteEmployee(2);
+  console.log("Deleted Employee:", deletedEmployee);
 
   await client.end();
   console.log('Client disconnecting.....❌');
