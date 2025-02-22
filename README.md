@@ -59,7 +59,7 @@ PGPORT=5432                        # Default PostgreSQL port (use 5432 unless it
 
 ### Set up the PostgreSQL database:
     - Create a PostgreSQL database.
-    - Update the database configuration in `config.js`.
+    - Update the database configuration in `client.cjs`.
 
  
  
