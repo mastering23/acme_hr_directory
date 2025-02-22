@@ -34,6 +34,7 @@ const seedAsync = async () => {
   await createTable();
   console.log('Creating tables.....✳️ \n TABLE CREATED [ employee ] \n TABLE CREATED [ department ]');
 
+  
   await addDepartment('Human Resources');  
   await addDepartment('Education');  
   await addDepartment('Administration');  

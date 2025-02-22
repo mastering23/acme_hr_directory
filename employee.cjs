@@ -1,5 +1,6 @@
 const client = require("./client.cjs");
 
+
 const addEmployee = async (name, departmentId) => {
   try {
     await client.query(
@@ -22,6 +23,7 @@ const fetchAllEmployees = async () => {
     console.log("Error fetching employees: ⚠️", err);
   }
 };
+
 
 const updateEmployee = async (id, name, departmentId) => {
   try {
